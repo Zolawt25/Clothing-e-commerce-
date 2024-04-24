@@ -8,7 +8,7 @@ import React from 'react'
 
 const Banners = () => {
   return (
-    <div className='mt-24 mb-24 px-24 '>
+    <div className='mt-24 mb-16 px-24 '>
       <div className='flex gap-8'>
         <div className='flex-1 bg-[image:url(/img/banner/b17.jpg)] bg-cover bg-center pl-7 py-28'>
             <p className=' text-gray-50 text-xl font-[330]'>crazy deals</p>
