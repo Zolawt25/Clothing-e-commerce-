@@ -22,7 +22,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changBackground)
     return (
-        <div className={`flex justify-between items-center px-24 py-4 sticky top-0 bg-navbg ${navbar && "shadow-lg"}`}>
+        <div className={`flex justify-between items-center px-24 py-4 sticky top-0 bg-navbg z-50 ${navbar && "shadow-lg"}`}>
         <div><a href="/"><img src="/img/logo.png" alt="logo" /></a></div>
         <div className='flex items-center w-1/3'>
             <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Home</a>
