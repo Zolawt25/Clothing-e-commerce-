@@ -30,7 +30,7 @@ const NewProducts = () => {
                 {
                     products.map((item, index)=>{
                         return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
-                            <Link to="/">
+                            <Link to="/product/sdwkfkd">
                                 <div className='rounded-xl overflow-hidden'><img src={item.img} alt={item.title}/></div>
                                 <div >
                                     <p className=' text-xs font-semibold text-gray-600 capitalize mt-3'>{item.brand}</p>
