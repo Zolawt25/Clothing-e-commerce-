@@ -26,7 +26,7 @@ const Navbar = () => {
         <div><a href="/"><img src="/img/logo.png" alt="logo" /></a></div>
         <div className='flex items-center w-1/3'>
             <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Home</a>
-            <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Shop</a>
+            <a href="/shop" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Shop</a>
             {/* <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Blog</a> */}
             <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>About</a>
             <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Contact</a>
