@@ -61,27 +61,27 @@ export const productsList = [
     },
     {
         img: "/img/products/f7.jpg",
-        brand: "Hermès",
+        brand: "hermès",
         title: "COOFANDY Men's Cotton Pants",
         rating: 4.8,
         price: 499,
         description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ad, laborum atque harum quaerat ut ratione dolore aut! Fugit eaque unde aliquid quidem ullam sint pariatur eum amet iure? Esse dolorum recusandae dignissimos perspiciatis mollitia amet vitae voluptatum vel. Nihil!",
-        category: "shirt",
+        category: "pants",
         featured: true
     },
     {
         img: "/img/products/f8.jpg",
-        brand: "Hermès",
+        brand: "hermès",
         title: "Comfort Colors Adult Shirt",
         rating: 4.8,
         price: 359,
         description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ad, laborum atque harum quaerat ut ratione dolore aut! Fugit eaque unde aliquid quidem ullam sint pariatur eum amet iure? Esse dolorum recusandae dignissimos perspiciatis mollitia amet vitae voluptatum vel. Nihil!",
-        category: "shirt",
+        category: "t-shirt",
         featured: true
     },
     {
         img: "/img/products/n1.jpg",
-        brand: "Hermès",
+        brand: "hermès",
         title: "Hanes Men’s Short Sleeve Shirt",
         rating: 4.8,
         price: 299,
@@ -91,7 +91,7 @@ export const productsList = [
     },
     {
         img: "/img/products/n2.jpg",
-        brand: "Cartier",
+        brand: "cartier",
         title: "COOFANDY Men's Muscle Fit Shirt",
         rating: 4.8,
         price: 250,
@@ -101,7 +101,7 @@ export const productsList = [
     },
     {
         img: "/img/products/n3.jpg",
-        brand: "Cartier",
+        brand: "cartier",
         title: "Mens Big and Tall Casual Shirt",
         rating: 4.8,
         price: 300,
@@ -111,7 +111,7 @@ export const productsList = [
     },
     {
         img: "/img/products/n4.jpg",
-        brand: "Dior",
+        brand: "dior",
         title: "Russell Athletic Men's Shirt",
         rating: 4.8,
         price: 500,
@@ -121,7 +121,7 @@ export const productsList = [
     },
     {
         img: "/img/products/n5.jpg",
-        brand: "Dior",
+        brand: "dior",
         title: "Under Armour Men's Shirt",
         rating: 4.8,
         price: 200,
@@ -131,17 +131,17 @@ export const productsList = [
     },
     {
         img: "/img/products/n6.jpg",
-        brand: "Dior",
+        brand: "dior",
         title: "Lee Men's Extreme Motion Flat shorts",
         rating: 4.8,
         price: 89,
         description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ad, laborum atque harum quaerat ut ratione dolore aut! Fugit eaque unde aliquid quidem ullam sint pariatur eum amet iure? Esse dolorum recusandae dignissimos perspiciatis mollitia amet vitae voluptatum vel. Nihil!",
-        category: "shirt",
+        category: "shorts",
         featured: false
     },
     {
         img: "/img/products/n7.jpg",
-        brand: "Gucci",
+        brand: "gucci",
         title: "Port Authority Short Shirt",
         rating: 4.8,
         price: 349,
@@ -151,7 +151,7 @@ export const productsList = [
     },
     {
         img: "/img/products/n8.jpg",
-        brand: "Gucci",
+        brand: "gucci",
         title: "Mens Vintage Designer Shirt",
         rating: 4.8,
         price: 399,

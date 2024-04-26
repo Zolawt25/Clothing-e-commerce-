@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import ShopPage from './pages/ShopPage';
 import DetailProduct from './pages/DetailProduct';
+import SearchPage from './pages/SearchPage';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' element={<HomePage/>}/>
           <Route path='/shop' element={<ShopPage/>}/>
           <Route path='/product/:id' element={<DetailProduct/>}/>
+          <Route path='/search' element={<SearchPage/>}/>
         </Routes>
       </Router>
     </div>
