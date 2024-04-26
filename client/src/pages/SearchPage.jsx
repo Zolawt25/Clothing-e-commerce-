@@ -70,8 +70,8 @@ const SearchPage = () => {
                         <button className=' rounded py-1 text-center bg-main font-semibold text-gray-50'>$250 - $400</button>
                         <button className=' rounded py-1 text-center bg-main font-semibold text-gray-50'>$400 - $600</button>
                         <form className='flex flex-col gap-2'>
-                            <input type="number" placeholder='min price...' className='pl-2 placeholder:text-sm rounded'/>
-                            <input type="number" placeholder='max price...' className='pl-2 placeholder:text-sm rounded'/>
+                            <input type="number" min={0} placeholder='min price...' className='pl-2 placeholder:text-sm rounded'/>
+                            <input type="number" min={0} placeholder='max price...' className='pl-2 placeholder:text-sm rounded'/>
                             <button className=' rounded py-1 text-center bg-main font-semibold text-gray-50'>Filter</button>
                         </form>
                     </div>
@@ -82,7 +82,10 @@ const SearchPage = () => {
                         products.map((item, index)=>{
                             return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
                                 <Link to="/product/sdwkfkd">
-                                    <div className='rounded-xl overflow-hidden'><img src={item.img} alt={item.title}/></div>
+                                    <div className='rounded-xl overflow-hidden relative'>
+                                        <img src={item.img} alt={item.title}/>
+                                        {item.featured && <p className=' absolute bottom-0 right-0 bg-[#FAAF00] px-3 py-1'>Featured</p>}
+                                    </div>
                                     <div >
                                         <p className=' text-xs font-semibold text-gray-600 capitalize mt-3'>{item.brand}</p>
                                         <h3 className=' font-semibold text-gray-700'>{item.title}</h3>

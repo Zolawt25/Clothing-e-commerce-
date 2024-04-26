@@ -27,15 +27,14 @@ const Navbar = () => {
         <div className='flex items-center w-1/3'>
             <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Home</a>
             <a href="/shop" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Shop</a>
-            {/* <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Blog</a> */}
-            <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>About</a>
-            <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Contact</a>
-            <a href="/" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>
+            <a href="/about" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>About</a>
+            <a href="/contact" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>Contact</a>
+            <a href="/cart" className=' hover:text-main text-md font-medium mr-7 text-gray-800'>
                 <Badge badgeContent={1} color="primary">
                     <ShoppingCartOutlined/>
                 </Badge>
             </a>
-            <a href="/" className=' bg-main px-6 py-2 rounded-full text-white'>Login</a>
+            <a href="/login" className=' bg-main px-6 py-2 rounded-full text-white'>Login</a>
         </div>
         </div>
     )

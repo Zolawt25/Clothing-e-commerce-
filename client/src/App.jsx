@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import ShopPage from './pages/ShopPage';
 import DetailProduct from './pages/DetailProduct';
 import SearchPage from './pages/SearchPage';
+import AboutUsPage from './pages/AboutUsPage';
+import ContactUsPage from './pages/ContactUsPage';
 
 
 
@@ -23,6 +25,8 @@ function App() {
           <Route path='/shop' element={<ShopPage/>}/>
           <Route path='/product/:id' element={<DetailProduct/>}/>
           <Route path='/search' element={<SearchPage/>}/>
+          <Route path='/about' element={<AboutUsPage/>}/>
+          <Route path='/contact' element={<ContactUsPage/>}/>
         </Routes>
       </Router>
     </div>

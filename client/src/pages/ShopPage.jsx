@@ -37,7 +37,10 @@ const ShopPage = () => {
                     products.map((item, index)=>{
                         return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
                             <Link to="/product/sdwkfkd">
-                                <div className='rounded-xl overflow-hidden'><img src={item.img} alt={item.title}/></div>
+                                <div className='rounded-xl overflow-hidden relative'>
+                                    <img src={item.img} alt={item.title}/>
+                                    {item.featured && <p className=' absolute bottom-0 right-0 bg-[#FAAF00] px-3 py-1'>Featured</p>}
+                                </div>
                                 <div >
                                     <p className=' text-xs font-semibold text-gray-600 capitalize mt-3'>{item.brand}</p>
                                     <h3 className=' font-semibold text-gray-700'>{item.title}</h3>
