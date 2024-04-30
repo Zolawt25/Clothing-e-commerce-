@@ -6,6 +6,9 @@ import DetailProduct from './pages/DetailProduct';
 import SearchPage from './pages/SearchPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ContactUsPage from './pages/ContactUsPage';
+import CartPage from './pages/CartPage';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 
@@ -27,6 +30,9 @@ function App() {
           <Route path='/search' element={<SearchPage/>}/>
           <Route path='/about' element={<AboutUsPage/>}/>
           <Route path='/contact' element={<ContactUsPage/>}/>
+          <Route path='/cart' element={<CartPage/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
         </Routes>
       </Router>
     </div>
