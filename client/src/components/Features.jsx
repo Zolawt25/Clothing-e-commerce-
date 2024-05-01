@@ -7,7 +7,7 @@ import React from 'react'
 
 const Features = () => {
   return (
-    <div className='flex justify-between items-center px-24 mt-12 mb-24'>
+    <div className=' grid lg:grid-cols-6 gap-5 items-center lg:px-24 px-16 sm:grid-cols-3 grid-cols-1 mt-12 mb-24'>
       <div className='flex flex-col items-center border-1 border-gray-900 py-6 px-2 shadow-[0_0_10px_-1px] shadow-gray-300'>
         <img src="/img/features/f1.png" alt="" />
         <p className=' mt-2 font-semibold bg-pink-200 px-2 py-1 rounded text-sm text-[#73787A]'>Free Shopping</p>

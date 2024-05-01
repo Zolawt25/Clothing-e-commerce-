@@ -23,10 +23,10 @@ const FeaturedProducts = () => {
         fetchData()
     },[])
     return (
-        <div className='px-24'>
+        <div className=' px-10 sm:px-24'>
             <h2 className=' text-center text-5xl font-bold text-gray-900 tracking-normal'>Featured Products</h2>
             <p className=' text-lg text-gray-400 text-center font-semibold mt-4 mb-14'>Summer Collection New Modern Design</p>
-            <div className=' grid grid-cols-4 gap-8'>
+            <div className=' grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8'>
                 {
                     products.map((item, index)=>{
                         return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
