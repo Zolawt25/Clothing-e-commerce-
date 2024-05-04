@@ -32,27 +32,30 @@ const CartPage = () => {
     }
   return (
     <div>
-       <div className='text-center bg-[image:url(/img/about/banner.png)] bg-cover bg-center py-14'>
-            <h3 className='text-gray-50 text-6xl font-[500]'>#cart</h3>
-            <p className='text-lg text-gray-300 font-[400]'>Add your coupons code & save up to 70%!</p>
+       <div className='text-center bg-[image:url(/img/about/banner.png)] bg-cover bg-center py-14 px-4 sm:px-0'>
+            <h3 className='text-gray-50 text-5xl sm:text-6xl  font-[500]'>#cart</h3>
+            <p className='sm:text-lg text-gray-300 font-[400]'>Add your coupons code & save up to 70%!</p>
         </div>
-        <div className='px-24 mt-11'>
-          <table className='text-center w-full  '>
-            <tr className=' border-y'>
-              <th className=' uppercase font-[480] py-3 text-gray-800'>Remove</th>
-              <th className=' uppercase font-[480] py-3 text-gray-800'>Image</th>
-              <th className=' uppercase font-[480] py-3 text-gray-800'>Product</th>
-              <th className=' uppercase font-[480] py-3 text-gray-800'>Price</th>
-              <th className=' uppercase font-[480] py-3 text-gray-800'>Quantity</th>
-              <th className=' uppercase font-[480] py-3 text-gray-800'>Subtotal</th>
-            </tr>
-            {
-              products.map((item, index)=>{
-                return <Carts key={index} {...item} setTotaledArry={setTotaledArry} index={index} cartPrice={cartPrice}/>
-              })
-            }
-          </table>
+        <div className=' max-w-[1400px]'>
+            <div className='px-24 mt-11 w-full'>
+              <table className='text-center w-full overflow-x-scroll'>
+                <tr className=' border-y'>
+                  <th className=' uppercase font-[480] py-3 text-gray-800'>Remove</th>
+                  <th className=' uppercase font-[480] py-3 text-gray-800'>Image</th>
+                  <th className=' uppercase font-[480] py-3 text-gray-800'>Product</th>
+                  <th className=' uppercase font-[480] py-3 text-gray-800'>Price</th>
+                  <th className=' uppercase font-[480] py-3 text-gray-800'>Quantity</th>
+                  <th className=' uppercase font-[480] py-3 text-gray-800'>Subtotal</th>
+                </tr>
+                {
+                  products.map((item, index)=>{
+                    return <Carts key={index} {...item} setTotaledArry={setTotaledArry} index={index} cartPrice={cartPrice}/>
+                  })
+                }
+              </table>
+          </div>
         </div>
+        
       <div className='px-24 mt-11'>
           <p className=' text-gray-900 font-semibold text-3xl mb-2'>Apply Coupon</p>
           <form onSubmit={(e)=> e.preventDefault()}>

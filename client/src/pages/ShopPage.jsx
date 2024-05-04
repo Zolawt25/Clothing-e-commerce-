@@ -32,7 +32,7 @@ const ShopPage = () => {
     return (
         <div>
             <SearchBar/>    
-            <div className=' grid grid-cols-4 gap-8 px-24 mt-20'>
+            <div className=' grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 mt-5 px-10 sm:px-24'>
                 {
                     products.map((item, index)=>{
                         return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
