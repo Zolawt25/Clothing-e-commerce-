@@ -23,7 +23,8 @@ const NewProducts = () => {
         fetchData()
     },[])
     return (
-        <div className='px-10 sm:px-24'>
+        <div className='flex justify-center'>
+            <div className='px-10 sm:px-24 w-full max-w-[1400px]'>
             <h2 className=' text-center text-5xl font-bold text-gray-900 tracking-normal'>New Arrivals</h2>
             <p className=' text-lg text-gray-400 text-center font-semibold mt-4 mb-14'>Summer Collection New Modern Design</p>
             <div className=' grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8'>
@@ -54,6 +55,8 @@ const NewProducts = () => {
                 }
             </div>
         </div>
+        </div>
+        
     )
 }
 

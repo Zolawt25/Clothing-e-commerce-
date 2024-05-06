@@ -31,34 +31,37 @@ const ShopPage = () => {
 
     return (
         <div>
-            <SearchBar/>    
-            <div className=' grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 mt-5 px-10 sm:px-24'>
-                {
-                    products.map((item, index)=>{
-                        return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
-                            <Link to="/product/sdwkfkd">
-                                <div className='rounded-xl overflow-hidden relative'>
-                                    <img src={item.img} alt={item.title}/>
-                                    {item.featured && <p className=' absolute bottom-0 right-0 bg-[#FAAF00] px-3 py-1'>Featured</p>}
+            <SearchBar/>
+            <div className='flex justify-center'>
+                <div className=' grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 mt-5 px-10 sm:px-24 w-full max-w-[1400px]'>
+                    {
+                        products.map((item, index)=>{
+                            return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
+                                <Link to="/product/sdwkfkd">
+                                    <div className='rounded-xl overflow-hidden relative'>
+                                        <img src={item.img} alt={item.title}/>
+                                        {item.featured && <p className=' absolute bottom-0 right-0 bg-[#FAAF00] px-3 py-1'>Featured</p>}
+                                    </div>
+                                    <div >
+                                        <p className=' text-xs font-semibold text-gray-600 capitalize mt-3'>{item.brand}</p>
+                                        <h3 className=' font-semibold text-gray-700'>{item.title}</h3>
+                                        <span>
+                                            <Stack spacing={1}>
+                                                <Rating name="size-small" defaultValue={item.rating} size="small"  readOnly/>
+                                            </Stack>
+                                        </span>
+                                    </div>
+                                </Link>
+                                <div className='flex justify-between mt-1 items-center'>
+                                    <p className=' font-semibold text-lg text-main'>${item.price}</p>
+                                    <CartBtn/>
                                 </div>
-                                <div >
-                                    <p className=' text-xs font-semibold text-gray-600 capitalize mt-3'>{item.brand}</p>
-                                    <h3 className=' font-semibold text-gray-700'>{item.title}</h3>
-                                    <span>
-                                        <Stack spacing={1}>
-                                            <Rating name="size-small" defaultValue={item.rating} size="small"  readOnly/>
-                                        </Stack>
-                                    </span>
-                                </div>
-                            </Link>
-                            <div className='flex justify-between mt-1 items-center'>
-                                <p className=' font-semibold text-lg text-main'>${item.price}</p>
-                                <CartBtn/>
                             </div>
-                        </div>
-                    })
-                }
-            </div>
+                        })
+                    }
+                </div>
+            </div>    
+            
             <div className=' text-center my-10'>
             <button className=' bg-main font-semibold text-gray-50 py-1 px-[13px] rounded-sm mr-2' onClick={()=>{
                     if (currentPage !== 1) {

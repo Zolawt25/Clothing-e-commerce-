@@ -8,7 +8,7 @@ import React from 'react'
 
 const Register = () => {
   return (
-    <div className='flex items-center justify-center h-[88vh]'>
+    <div className='flex items-center justify-center h-[88vh] px-4'>
         <div className='w-96 shadow-[0_0_7px_-1px_#597280] pt-4 pb-7 px-6'>
             <p className=' text-gray-800 text-3xl text-center mb-4'>Register</p>
             <form className='flex flex-col'>
