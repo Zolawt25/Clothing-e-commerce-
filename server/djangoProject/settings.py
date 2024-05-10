@@ -53,8 +53,9 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     
     #apps
-    "users"
-    
+    "users",
+    "products",
+    "cart",
 ]
 
 SITE_ID=1
