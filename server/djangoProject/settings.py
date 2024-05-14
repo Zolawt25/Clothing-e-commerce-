@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    "corsheaders",
+    'django_filters',
     
     #apps
     "users",
@@ -63,12 +65,19 @@ SITE_ID=1
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:5173"
+)
 
 ROOT_URLCONF = "djangoProject.urls"
 
@@ -153,15 +162,12 @@ REST_FRAMEWORK = {
 # "rest_framework.permissions.IsAuthenticated",
 # ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        # "rest_framework.authentication.SessionAuthentication",
-        # "rest_framework.authentication.TokenAuthentication",
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication', # dj-rest-auth
-        # "rest_framework_simplejwt.authentication.JWTAuthentication"
         'rest_framework_simplejwt.authentication.JWTAuthentication', # simpleJWT
     ],
-    # 'DEFAULT_FILTER_BACKENDS': (
-    #     'django_filters.rest_framework.DjangoFilterBackend',
-    # ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 #all_auth

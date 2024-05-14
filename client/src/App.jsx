@@ -18,7 +18,7 @@ import Register from './pages/Register';
 
 function App() {
   
-
+  // console.log(import.meta.env.VITE_SERVER_URL)
   return (
     <div className=''>
       <Navbar/>

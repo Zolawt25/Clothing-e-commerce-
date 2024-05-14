@@ -8,6 +8,8 @@ import CartBtn from '../components/CartBtn';
 import SignupBanner from '../components/SignupBanner';
 import Footer from '../components/Footer';
 import SearchBar from '../components/SearchBar';
+import axios from 'axios';
+import Loading from '../components/Loading';
 
 
 const ShopPage = () => {
@@ -18,6 +20,7 @@ const ShopPage = () => {
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
     const totalPages = productsList.length
+    const [isLoading, setIsLoading] = useState(false)
 
     let pages = []
     for (let i = 0; i < Math.ceil(totalPages/postPerPage); i++) {
@@ -25,19 +28,26 @@ const ShopPage = () => {
     }
 
     useEffect(()=>{
-        const currentPost = productsList.slice(firstPostIndex, lastPostIndex)
-        setProducts(currentPost)
+        const fetchData = async()=>{
+            setIsLoading(true)
+            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/`)
+            const currentPost = res.data.slice(firstPostIndex, lastPostIndex)
+            setProducts(currentPost)
+            setIsLoading(false)
+        }
+        fetchData()
     },[currentPage])
 
     return (
         <div>
             <SearchBar/>
+            {isLoading && <div><Loading/></div>}
             <div className='flex justify-center'>
                 <div className=' grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 mt-5 px-10 sm:px-24 w-full max-w-[1400px]'>
                     {
                         products.map((item, index)=>{
                             return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
-                                <Link to="/product/sdwkfkd">
+                                <Link to={`/product/${item.id}`}>
                                     <div className='rounded-xl overflow-hidden relative'>
                                         <img src={item.img} alt={item.title}/>
                                         {item.featured && <p className=' absolute bottom-0 right-0 bg-[#FAAF00] px-3 py-1'>Featured</p>}

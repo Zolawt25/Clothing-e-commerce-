@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { productsList } from '../assets/products'
 import CartBtn from '../components/CartBtn'
 import FeaturedProducts from '../components/FeaturedProducts'
 import SignupBanner from '../components/SignupBanner'
 import Footer from '../components/Footer'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
+import Loading from '../components/Loading'
 
 
 
@@ -12,11 +15,24 @@ import Footer from '../components/Footer'
 
 
 const DetailProduct = () => {
-    const [product, setProduct] = useState(productsList[0])
+    const [product, setProduct] = useState({})
     const [cartBtnText, setCartBtnText] = useState(true)
+    const id = useLocation().pathname.split("/")[2]
+    const [isLoading, setIsLoading] = useState(false)
 
+    useEffect(()=>{
+        const fetchData = async()=>{
+            setIsLoading(true)
+            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/${id}`)
+            setProduct(res.data)
+            setIsLoading(false)
+            window.scrollTo(0,0)
+        }
+        fetchData()
+    },[id])
     return (
         <div>
+            {isLoading && <div><Loading/></div>}
             <div className='flex justify-center'>
                 <div className='flex md:px-12 lg:px-24 items-center mt-12 flex-col md:flex-row w-full max-w-[1400px]'>
                     <div className='flex justify-center'>
