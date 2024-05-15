@@ -2,34 +2,24 @@ import React, { useEffect, useRef, useState } from 'react'
 import { productsList } from '../assets/products'
 import Carts from '../components/Carts'
 import Footer from '../components/Footer'
+import emptyCart from "../../public/img/cart.png"
 
 
 
 
 
 
+const CartPage = ({carts, setCartChange, cartChange}) => {
 
-const CartPage = () => {
-
-  const [products, setProducts] = useState([])
   let subtotal = 0
   const [totaledArry, setTotaledArry] = useState([])
   const cartPrice = []
 
-    useEffect(()=>{
-        const fetchData = ()=>{
-            const res = productsList.filter((item)=>{
-                if (item.featured === false) {
-                   return item
-                }
-            })
-            setProducts(res)
-        }
-        fetchData()
-    },[])
-    for (let i = 0; i < totaledArry.slice(0, products.length).length; i++) {
-      subtotal += totaledArry[i]
-    }
+    
+    
+  for (let i = 0; i < totaledArry.slice(0, carts.length).length; i++) {
+    subtotal += totaledArry[i]
+  }
   return (
     <div>
        <div className='text-center bg-[image:url(/img/about/banner.png)] bg-cover bg-center py-14 px-4 sm:px-0'>
@@ -48,11 +38,15 @@ const CartPage = () => {
                   <th className=' uppercase font-[480] py-3 text-gray-800'>Subtotal</th>
                 </tr>
                 {
-                  products.map((item, index)=>{
-                    return <Carts key={index} {...item} setTotaledArry={setTotaledArry} index={index} cartPrice={cartPrice}/>
+                  carts.map((item, index)=>{
+                    return <Carts key={index} {...item} setTotaledArry={setTotaledArry} index={index} cartPrice={cartPrice} setCartChange={setCartChange} cartChange={cartChange}/>
                   })
                 }
               </table>
+              {carts.length === 0 && <div className='flex flex-col items-center justify-center mt-6'>
+                <img src={emptyCart} alt="empty cart image" className='w-[100px] sm:w-[200px]'/>
+                <p className='mt-4 text-2xl sm:text-3xl font-semibold text-gray-900'>your cart is empty :(</p>
+              </div>}
           </div>
         </div>
       <div className='flex justify-center'>

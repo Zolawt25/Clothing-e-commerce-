@@ -16,7 +16,7 @@ import Loading from '../components/Loading'
 
 
 
-const SearchPage = () => {
+const SearchPage = ({setCartChange}) => {
 
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -131,7 +131,7 @@ const SearchPage = () => {
                                     </Link>
                                     <div className='flex justify-between mt-1 items-center'>
                                         <p className=' font-semibold text-lg text-main'>${item.price}</p>
-                                        <CartBtn/>
+                                        <CartBtn {...item} setCartChange={setCartChange}/>
                                     </div>
                                 </div>
                             })

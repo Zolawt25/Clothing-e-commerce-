@@ -1,4 +1,5 @@
 import { DeleteOutline } from '@mui/icons-material'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 
@@ -7,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 
 
 
-const Carts = ({img, title, price, setTotaledArry, index, cartPrice}) => {
+const Carts = ({id, img, title, price, setTotaledArry, index, cartPrice, setCartChange, cartChange}) => {
     const [quantity, setQuantity] = useState(1)
     const [total, setTotal] = useState(price)
     
@@ -18,14 +19,19 @@ const Carts = ({img, title, price, setTotaledArry, index, cartPrice}) => {
     cartPrice[index] = total 
     useEffect(()=>{
         setTotaledArry(cartPrice)
-    },[total])
+    },[total, cartChange])
 
     useEffect(()=>{
         cartPrice = [...cartPrice, price]
     },[])
+
+    const removeCart = async(id)=>{
+        await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/${id}/`)
+        setCartChange(prev => !prev)
+    }
     return (
         <tr className='py-2'>
-            <td className=' text-red-500'><DeleteOutline style={{fontSize: "medium", cursor: "pointer"}}/></td>
+            <td className=' text-red-500' onClick={()=> removeCart(id)}><DeleteOutline style={{fontSize: "medium", cursor: "pointer"}}/></td>
             <td className='flex justify-center'><img src={img} className='w-[60px] py-3'/></td>
             <td className=' text-gray-700'>{title}</td>
             <td className=' text-gray-700'>${price}</td>

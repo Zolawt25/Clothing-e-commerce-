@@ -14,7 +14,7 @@ import Loading from '../components/Loading'
 
 
 
-const DetailProduct = () => {
+const DetailProduct = ({setCartChange}) => {
     const [product, setProduct] = useState({})
     const [cartBtnText, setCartBtnText] = useState(true)
     const id = useLocation().pathname.split("/")[2]
@@ -50,7 +50,7 @@ const DetailProduct = () => {
                             <option value="XL">XL</option>
                         </select>
                         <div>
-                            <CartBtn text={cartBtnText}/>
+                            <CartBtn text={cartBtnText} {...product} setCartChange={setCartChange}/>
                         </div>
                         <p className=' text-2xl font-semibold text-gray-800 mt-3'>Product Details</p>
                         <div className='mt-3 lg:pr-32 text-gray-700 sm:text-lg'>

@@ -8,7 +8,7 @@ import { Menu, ShoppingCartOutlined } from '@mui/icons-material';
 
 
 
-const Navbar = () => {
+const Navbar = ({carts}) => {
     const [navbar, setNavbar] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
@@ -36,7 +36,7 @@ const Navbar = () => {
                     <button className='md:hidden absolute top-7 left-10 text-4xl text-gray-800' onClick={()=> setIsOpen(false)}>x</button>
                 </div>
                 <a href="/cart" className=' hover:text-main text-sm font-medium mr-4 md:mr-7 text-gray-800'>
-                        <Badge badgeContent={1} color="primary">
+                        <Badge badgeContent={carts.length} color="primary">
                             <ShoppingCartOutlined/>
                         </Badge>
                     </a>
