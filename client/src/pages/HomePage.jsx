@@ -13,14 +13,14 @@ import SignupBanner from '../components/SignupBanner'
 
 
 
-const HomePage = ({setCartChange}) => {
+const HomePage = ({setCartChange, carts}) => {
   return (
     <div>
       <Hero/>
       <Features/>
-      <FeaturedProducts setCartChange={setCartChange}/>
+      <FeaturedProducts setCartChange={setCartChange} carts={carts}/>
       <DiscountBanner/>
-      <NewProducts setCartChange={setCartChange}/>
+      <NewProducts setCartChange={setCartChange} carts={carts}/>
       <Banners/>
       <SignupBanner/>
       <Footer/>

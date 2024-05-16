@@ -12,7 +12,7 @@ import axios from 'axios';
 import Loading from '../components/Loading';
 
 
-const ShopPage = ({setCartChange}) => {
+const ShopPage = ({setCartChange, carts}) => {
 
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -64,7 +64,7 @@ const ShopPage = ({setCartChange}) => {
                                 </Link>
                                 <div className='flex justify-between mt-1 items-center'>
                                     <p className=' font-semibold text-lg text-main'>${item.price}</p>
-                                    <CartBtn {...item} setCartChange={setCartChange}/>
+                                    <CartBtn {...item} setCartChange={setCartChange} carts={carts}/>
                                 </div>
                             </div>
                         })

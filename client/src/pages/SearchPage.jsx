@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
-import { productsList } from '../assets/products'
 import { ArrowBackOutlined, ArrowForwardOutlined } from '@mui/icons-material'
-import { Link, useLocation, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import CartBtn from '../components/CartBtn';
@@ -16,7 +15,7 @@ import Loading from '../components/Loading'
 
 
 
-const SearchPage = ({setCartChange}) => {
+const SearchPage = ({setCartChange, carts}) => {
 
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -131,13 +130,12 @@ const SearchPage = ({setCartChange}) => {
                                     </Link>
                                     <div className='flex justify-between mt-1 items-center'>
                                         <p className=' font-semibold text-lg text-main'>${item.price}</p>
-                                        <CartBtn {...item} setCartChange={setCartChange}/>
+                                        <CartBtn {...item} setCartChange={setCartChange} carts={carts}/>
                                     </div>
                                 </div>
                             })
                         }
                     </div>
-                    
                     </div>
                     </div>
             </div>

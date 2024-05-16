@@ -1,16 +1,36 @@
 import { ShoppingCartOutlined } from '@mui/icons-material'
 import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { jwtDecode } from "jwt-decode";
+import Cookies from 'universal-cookie'
 
 
 
 
 
 
+const CartBtn = ({text, id, img, title, price, setCartChange, carts}) => {
+  const [alreadyIn, setAlreadyIn] = useState(false)
+  const cookie = new Cookies()
+  const token = cookie.get("user_access_token")
+  const decoded = token ? jwtDecode(token) : ""
 
-const CartBtn = ({text, id, img, title, price, setCartChange}) => {
+  useEffect(()=>{
+    carts.forEach(item => {
+      if (id === item.productId) {
+        setAlreadyIn(true)
+      }
+    });
+  })
 
   const addToCart = async()=>{
-    await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/`, {productId: id, userEmail: "zelalem@gmail.com", img, title, price})
+    if (alreadyIn) {
+      return alert("it's in bro")
+    }
+    if (!decoded) {
+      return alert("you must login first")
+    }
+    await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/`, {productId: id, userEmail: decoded.email, img, title, price})
     setCartChange(prev => !prev)
   }
   return (
