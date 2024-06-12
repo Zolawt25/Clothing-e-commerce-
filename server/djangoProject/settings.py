@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "users",
     "products",
     "cart",
+    "payment"
 ]
 
 SITE_ID=1
@@ -78,6 +79,8 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:8000",
     "http://127.0.0.1:5173"
 )
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
 
 ROOT_URLCONF = "djangoProject.urls"
 
@@ -246,3 +249,8 @@ SIMPLE_JWT = {
     
     "TOKEN_OBTAIN_SERIALIZER": "users.tokenSerializer.MyTokenObtainPairSerializer",
 }
+
+#stripe
+
+STRIPE_SECRET_KEY = 'sk_test_51NQvfjEBsoOj2lcL3KfhdL0GDMdi8YHMq9vD2Nybul642gA4QHqAVF7BilfJs3tFAH0ZVXxUt2c4iHaYMBAaTbf700G3uNTG2N'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51NQvfjEBsoOj2lcLPiMEwdhuAFe5vbEcoUMXotj8wluOxBfBQKA6QDT6JI0bMZg8h5XuErcibLM9lf6d8l5KGxf700jqnIBipL'

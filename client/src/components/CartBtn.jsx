@@ -3,13 +3,14 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { jwtDecode } from "jwt-decode";
 import Cookies from 'universal-cookie'
+import { toast } from 'react-toastify';
 
 
 
 
 
 
-const CartBtn = ({text, id, img, title, price, setCartChange, carts}) => {
+const CartBtn = ({text, id, img, title, price, setCartChange, carts, notification}) => {
   const [alreadyIn, setAlreadyIn] = useState(false)
   const cookie = new Cookies()
   const token = cookie.get("user_access_token")
@@ -25,10 +26,10 @@ const CartBtn = ({text, id, img, title, price, setCartChange, carts}) => {
 
   const addToCart = async()=>{
     if (alreadyIn) {
-      return alert("it's in bro")
+      return notification("info", "It's already in the cart!")
     }
     if (!decoded) {
-      return alert("you must login first")
+      return notification("error", "You must login first!")
     }
     await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/`, {productId: id, userEmail: decoded.email, img, title, price})
     setCartChange(prev => !prev)

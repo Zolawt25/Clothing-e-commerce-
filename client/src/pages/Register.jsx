@@ -9,7 +9,7 @@ import BtnLoading from '../components/BtnLoading'
 
 
 
-const Register = () => {
+const Register = ({notification}) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password1, setPassword1] = useState('')

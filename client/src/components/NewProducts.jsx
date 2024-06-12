@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { productsList } from '../assets/products'
 import { Link } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
@@ -8,7 +7,7 @@ import axios from 'axios';
 import Loading from './Loading';
 
 
-const NewProducts = ({setCartChange, carts}) => {
+const NewProducts = ({setCartChange, carts, notification}) => {
     const [products, setProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
@@ -57,7 +56,7 @@ const NewProducts = ({setCartChange, carts}) => {
                             </Link>
                             <div className='flex justify-between mt-1 items-center'>
                                 <p className=' font-semibold text-lg text-main'>${item.price}</p>
-                                <CartBtn {...item} setCartChange={setCartChange} carts={carts}/>
+                                <CartBtn {...item} setCartChange={setCartChange} carts={carts} notification={notification}/>
                             </div>
                         </div>
                     })

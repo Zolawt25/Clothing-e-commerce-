@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { productsList } from '../assets/products'
 import CartBtn from '../components/CartBtn'
 import FeaturedProducts from '../components/FeaturedProducts'
 import SignupBanner from '../components/SignupBanner'
@@ -14,7 +13,7 @@ import Loading from '../components/Loading'
 
 
 
-const DetailProduct = ({setCartChange, carts}) => {
+const DetailProduct = ({setCartChange, carts, notification}) => {
     const [product, setProduct] = useState({})
     const [cartBtnText, setCartBtnText] = useState(true)
     const id = useLocation().pathname.split("/")[2]
@@ -50,7 +49,7 @@ const DetailProduct = ({setCartChange, carts}) => {
                             <option value="XL">XL</option>
                         </select>
                         <div>
-                            <CartBtn text={cartBtnText} {...product} setCartChange={setCartChange} carts={carts}/>
+                            <CartBtn text={cartBtnText} {...product} setCartChange={setCartChange} carts={carts} notification={notification}/>
                         </div>
                         <p className=' text-2xl font-semibold text-gray-800 mt-3'>Product Details</p>
                         <div className='mt-3 lg:pr-32 text-gray-700 sm:text-lg'>
@@ -61,9 +60,9 @@ const DetailProduct = ({setCartChange, carts}) => {
             </div>
                 
             <div className='mt-24'>
-                <FeaturedProducts/>
+                <FeaturedProducts notification={notification} setCartChange={setCartChange} carts={carts}/>
                 <br /><br />
-                <SignupBanner/>
+                <SignupBanner notification={notification} setCartChange={setCartChange} carts={carts}/>
                 <Footer/>
             </div>
         </div>

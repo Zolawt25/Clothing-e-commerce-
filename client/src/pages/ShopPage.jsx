@@ -1,6 +1,5 @@
 import { ArrowBackOutlined, ArrowForwardOutlined } from '@mui/icons-material'
 import { useEffect, useState } from 'react'
-import { productsList } from '../assets/products'
 import { Link } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
@@ -12,14 +11,14 @@ import axios from 'axios';
 import Loading from '../components/Loading';
 
 
-const ShopPage = ({setCartChange, carts}) => {
+const ShopPage = ({setCartChange, carts, notification}) => {
 
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const postPerPage = 12
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
-    const totalPages = productsList.length
+    const totalPages = products.length
     const [isLoading, setIsLoading] = useState(false)
 
     let pages = []
@@ -64,7 +63,7 @@ const ShopPage = ({setCartChange, carts}) => {
                                 </Link>
                                 <div className='flex justify-between mt-1 items-center'>
                                     <p className=' font-semibold text-lg text-main'>${item.price}</p>
-                                    <CartBtn {...item} setCartChange={setCartChange} carts={carts}/>
+                                    <CartBtn {...item} setCartChange={setCartChange} carts={carts} notification={notification}/>
                                 </div>
                             </div>
                         })
