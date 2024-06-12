@@ -41,7 +41,7 @@ const CartPage = ({carts, setCartChange, cartChange}) => {
         console.log(error)
     }
 }
-  // console.log(stripeToken.id)
+  console.log(cartPrice)
   return (
     <div>
        <div className='text-center bg-[image:url(/img/about/banner.png)] bg-cover bg-center py-14 px-4 sm:px-0'>

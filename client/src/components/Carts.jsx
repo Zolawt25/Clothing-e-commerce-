@@ -15,7 +15,7 @@ const Carts = ({id, img, title, price, setTotaledArry, index, cartPrice, setCart
     
     useEffect(()=>{
         setTotal(quantity*price)
-    },[quantity])
+    },[quantity, cartChange])
     cartPrice[index] = total 
     useEffect(()=>{
         setTotaledArry(cartPrice)
@@ -28,6 +28,9 @@ const Carts = ({id, img, title, price, setTotaledArry, index, cartPrice, setCart
     const removeCart = async(id)=>{
         await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/${id}/`)
         setCartChange(prev => !prev)
+        // window.location.reload()
+        setQuantity(1)
+        setTotal(price)
     }
     return (
         <tr className='py-2'>

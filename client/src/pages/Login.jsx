@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import Cookies from "universal-cookie"
 import BtnLoading from '../components/BtnLoading'
 import axios from 'axios'
-import { toast } from 'react-toastify';
 
 
 
@@ -12,7 +11,7 @@ import { toast } from 'react-toastify';
 
 
 
-const Login = ({notification}) => {
+const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)

@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { jwtDecode } from "jwt-decode";
 import Cookies from 'universal-cookie'
-import { toast } from 'react-toastify';
 
 
 
@@ -26,7 +25,7 @@ const CartBtn = ({text, id, img, title, price, setCartChange, carts, notificatio
 
   const addToCart = async()=>{
     if (alreadyIn) {
-      return notification("info", "It's already in the cart!")
+      return notification ? notification("info", "It's already in the cart!") : alert("aaaaa")
     }
     if (!decoded) {
       return notification("error", "You must login first!")

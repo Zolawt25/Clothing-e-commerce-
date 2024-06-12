@@ -18,7 +18,7 @@ const ShopPage = ({setCartChange, carts, notification}) => {
     const postPerPage = 12
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
-    const totalPages = products.length
+    const [totalPages, setTotalPages] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
 
     let pages = []
@@ -30,6 +30,7 @@ const ShopPage = ({setCartChange, carts, notification}) => {
         const fetchData = async()=>{
             setIsLoading(true)
             const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/`)
+            setTotalPages(res.data.length)
             const currentPost = res.data.slice(firstPostIndex, lastPostIndex)
             setProducts(currentPost)
             setIsLoading(false)

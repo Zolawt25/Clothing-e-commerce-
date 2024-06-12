@@ -38,7 +38,6 @@ function App() {
       progress: undefined,
       theme: "dark",
       type: type
-      // transition: Bounce,
       })
   }
   useEffect(()=>{
@@ -60,14 +59,14 @@ function App() {
        <Router>
         <Routes>
           <Route path='/' element={<HomePage setCartChange={setCartChange} carts={carts} notification={notification}/>}/>
-          <Route path='/shop' element={<ShopPage setCartChange={setCartChange} carts={carts}/>} notification={notification}/>
+          <Route path='/shop' element={<ShopPage setCartChange={setCartChange} carts={carts} notification={notification}/>}/>
           <Route path='/product/:id' element={<DetailProduct setCartChange={setCartChange} carts={carts} notification={notification}/>}/>
           <Route path='/search' element={<SearchPage setCartChange={setCartChange} carts={carts} notification={notification}/>}/>
           <Route path='/about' element={<AboutUsPage/>}/>
           <Route path='/contact' element={<ContactUsPage/>}/>
           <Route path='/cart' element={<CartPage carts={carts} setCartChange={setCartChange} cartChange={cartChange}/>}/>
-          <Route path='/login' element={<Login/>} notification={notification}/>
-          <Route path='/register' element={<Register/>} notification={notification}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
           <Route path='/success' element={<SuccessPage/>}/>
         </Routes>
       </Router>
