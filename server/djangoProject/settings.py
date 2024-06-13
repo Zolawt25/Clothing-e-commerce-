@@ -9,22 +9,27 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os 
 from pathlib import Path
+from environs import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 from datetime import timedelta
 
+#env
+env = Env()
+env.read_env()
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-q39!4daplgh8ig*8@e+o1-8$=^7hs5*bpj$m53wdlmqqhz4wsf"
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = []
 
@@ -81,6 +86,8 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
+
+ALLOWED_HOSTS = ["*"]
 
 ROOT_URLCONF = "djangoProject.urls"
 
@@ -154,6 +161,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+MEDIA_URLS ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #
 
@@ -252,5 +263,5 @@ SIMPLE_JWT = {
 
 #stripe
 
-STRIPE_SECRET_KEY = 'sk_test_51NQvfjEBsoOj2lcL3KfhdL0GDMdi8YHMq9vD2Nybul642gA4QHqAVF7BilfJs3tFAH0ZVXxUt2c4iHaYMBAaTbf700G3uNTG2N'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51NQvfjEBsoOj2lcLPiMEwdhuAFe5vbEcoUMXotj8wluOxBfBQKA6QDT6JI0bMZg8h5XuErcibLM9lf6d8l5KGxf700jqnIBipL'
+STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
+STRIPE_PUBLISHABLE_KEY = env.str("STRIPE_PUBLISHABLE_KEY")
