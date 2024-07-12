@@ -109,7 +109,7 @@ const SearchPage = ({setCartChange, carts, notification}) => {
                             {products.length === 0 && <p className='text-3xl font-semibold text-gray-800 mt-10'>sorry nothing found</p>}
                         </div>
                         {isLoading && <div><Loading/></div>}
-                        <div className=' grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
+                        {!isLoading && <div className=' grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
                         {
                             products.map((item, index)=>{
                                 return <div key={index} className='p-2 border rounded-2xl hover:shadow-xl duration-300 hover:scale-105'>
@@ -135,7 +135,7 @@ const SearchPage = ({setCartChange, carts, notification}) => {
                                 </div>
                             })
                         }
-                    </div>
+                    </div>}
                     </div>
                     </div>
             </div>

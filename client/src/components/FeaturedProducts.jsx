@@ -21,6 +21,7 @@ const FeaturedProducts = ({setCartChange, carts, notification}) => {
                             return item
                         }
                     })
+                console.log(featuredProducts)
                 setProducts(featuredProducts)
                 setIsLoading(false)
             } catch (error) {

@@ -42,7 +42,7 @@ const Login = () => {
                 <input className='bg-[#ebf2f7b2] border py-2 px-3 outline-none rounded text-sm mb-4' type="email" placeholder='enter your email...' required onChange={(e)=>setEmail(e.target.value)}/>
                 {error.map(item =>(<p key={item} className=' text-sm text-red-600 mb-3'>{item}</p>))}
                 <input className='bg-[#ebf2f7b2] border py-2 px-3 outline-none rounded text-sm mb-4' type="password" placeholder='enter your password...' required onChange={(e)=>setPassword(e.target.value)}/>
-                <button className='bg-main text-gray-50 py-1'>{isLoading ? <BtnLoading/> : "Login"}</button>
+                <button className='bg-main text-gray-50 py-1 h-10 z-50'>{isLoading ? <BtnLoading/> : "Login"}</button>
             </form>
             <p className='text-sm mt-4'>Don't have an account? <a href="/register" className='text-semibold text-main'>Register</a></p>
         </div>

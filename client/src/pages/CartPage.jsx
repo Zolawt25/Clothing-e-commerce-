@@ -5,13 +5,14 @@ import emptyCart from "../../public/img/cart.png"
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout';
 import { useNavigate } from 'react-router-dom'
+import Loading from '../components/Loading'
 
 
 
 
 const KEY = `${import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY}`
 
-const CartPage = ({carts, setCartChange, cartChange}) => {
+const CartPage = ({carts, setCartChange, cartChange, isCartLoading}) => {
 
   let subtotal = 0
   const [totaledArry, setTotaledArry] = useState([])
@@ -41,7 +42,7 @@ const CartPage = ({carts, setCartChange, cartChange}) => {
         console.log(error)
     }
 }
-  console.log(cartPrice)
+  // console.log(cartPrice)
   return (
     <div>
        <div className='text-center bg-[image:url(/img/about/banner.png)] bg-cover bg-center py-14 px-4 sm:px-0'>
@@ -59,13 +60,16 @@ const CartPage = ({carts, setCartChange, cartChange}) => {
                   <th className=' uppercase font-[480] py-3 text-gray-800'>Quantity</th>
                   <th className=' uppercase font-[480] py-3 text-gray-800'>Subtotal</th>
                 </tr>
-                {
+                { !isCartLoading &&
                   carts.map((item, index)=>{
                     return <Carts key={index} {...item} setTotaledArry={setTotaledArry} index={index} cartPrice={cartPrice} setCartChange={setCartChange} cartChange={cartChange}/>
                   })
                 }
               </table>
-              {carts.length === 0 && <div className='flex flex-col items-center justify-center mt-6'>
+              {
+                isCartLoading && <div><Loading/></div>
+              }
+              {!isCartLoading && carts.length === 0 && <div className='flex flex-col items-center justify-center mt-6'>
                 <img src={emptyCart} alt="empty cart image" className='w-[100px] sm:w-[200px]'/>
                 <p className='mt-4 text-2xl sm:text-3xl font-semibold text-gray-900'>your cart is empty :(</p>
               </div>}

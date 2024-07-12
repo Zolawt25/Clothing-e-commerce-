@@ -2,6 +2,7 @@ import { DeleteOutline } from '@mui/icons-material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify';
+import DeleteLoading from './DeleteLoading';
 
 
 
@@ -11,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 const Carts = ({id, img, title, price, setTotaledArry, index, cartPrice, setCartChange, cartChange}) => {
     const [quantity, setQuantity] = useState(1)
     const [total, setTotal] = useState(price)
+    const [isLoading, setIsLoading] = useState(false)
     
     
     useEffect(()=>{
@@ -26,15 +28,17 @@ const Carts = ({id, img, title, price, setTotaledArry, index, cartPrice, setCart
     },[])
 
     const removeCart = async(id)=>{
-        await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/${id}/`)
+        setIsLoading(true)
+        !isLoading && await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/${id}/`)
         setCartChange(prev => !prev)
         // window.location.reload()
         setQuantity(1)
         setTotal(price)
+        setIsLoading(false)
     }
     return (
         <tr className='py-2'>
-            <td className=' text-red-500' onClick={()=> removeCart(id)}><DeleteOutline style={{fontSize: "medium", cursor: "pointer"}}/></td>
+            <td className=' text-red-500 cursor-pointer' onClick={()=> removeCart(id)}>{isLoading ? <DeleteLoading/> : <DeleteOutline style={{fontSize: "medium", cursor: "pointer"}}/>}</td>
             <td className='flex justify-center'><img src={img} className='w-[60px] py-3'/></td>
             <td className=' text-gray-700'>{title}</td>
             <td className=' text-gray-700'>${price}</td>

@@ -24,6 +24,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [carts, setCarts] = useState([])
   const [cartChange, setCartChange] = useState(false)
+  const [isCartLoading, setIsCartLoading] = useState(false)
   const cookie = new Cookies()
   const token = cookie.get("user_access_token")
   const decoded = token ? jwtDecode(token) : ""
@@ -42,6 +43,7 @@ function App() {
   }
   useEffect(()=>{
     const fetchData = async()=>{
+      setIsCartLoading(true)
       const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/cart/`)
       const filterData = res.data.filter((item)=>{
           if (item.userEmail === decoded.email) {
@@ -49,6 +51,7 @@ function App() {
           }
         })
       setCarts(filterData)
+      setIsCartLoading(false)
     }
     fetchData()
   },[cartChange])
@@ -64,7 +67,7 @@ function App() {
           <Route path='/search' element={<SearchPage setCartChange={setCartChange} carts={carts} notification={notification}/>}/>
           <Route path='/about' element={<AboutUsPage/>}/>
           <Route path='/contact' element={<ContactUsPage/>}/>
-          <Route path='/cart' element={<CartPage carts={carts} setCartChange={setCartChange} cartChange={cartChange}/>}/>
+          <Route path='/cart' element={<CartPage carts={carts} setCartChange={setCartChange} cartChange={cartChange} isCartLoading={isCartLoading}/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/success' element={<SuccessPage/>}/>

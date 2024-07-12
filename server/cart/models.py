@@ -1,4 +1,5 @@
 from django.db import models
+# import uuid
 
 # Create your models here.
 
@@ -7,6 +8,7 @@ from django.db import models
 
 
 class CartModel(models.Model):
+    # id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     productId = models.IntegerField()
     userEmail = models.EmailField(max_length=354)
     img  = models.CharField(max_length=9999)

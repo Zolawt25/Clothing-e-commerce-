@@ -19,10 +19,12 @@ const DetailProduct = ({setCartChange, carts, notification}) => {
     const id = useLocation().pathname.split("/")[2]
     const [isLoading, setIsLoading] = useState(false)
 
+    console.log(id)
     useEffect(()=>{
         const fetchData = async()=>{
             setIsLoading(true)
-            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/${id}`)
+            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/${id}/`)
+            console.log(res)
             setProduct(res.data)
             setIsLoading(false)
             window.scrollTo(0,0)
