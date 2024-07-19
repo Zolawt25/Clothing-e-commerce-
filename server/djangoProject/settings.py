@@ -88,10 +88,10 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:3000",
     "http://localhost:8000",
     "http://127.0.0.1:5173",
-    "https://cara-fawn.vercel.app"
+    "https://cara-sigma.vercel.app"
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173", "https://cara-fawn.vercel.app"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173", "https://cara-sigma.vercel.app"]
 
 # ALLOWED_HOSTS = ["*"]
 
