@@ -24,8 +24,8 @@ const Login = () => {
     try {
       setIsLoading(true)
       const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login/`, {email, password})
-      cookie.set("user_access_token", res.data.access_token)
-      cookie.set("user_refresh_token", res.data.refresh_token)
+      cookie.set("user_access_token", res.data.access)
+      cookie.set("user_refresh_token", res.data.refresh)
       setIsLoading(false)
       navigate("/")
       window.location.reload()

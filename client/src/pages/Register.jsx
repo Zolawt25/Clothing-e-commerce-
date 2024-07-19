@@ -25,8 +25,9 @@ const Register = () => {
     try {
       setIsLoading(true)
       const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/registration/`, {name, email, password1, password2})
-      cookie.set("user_access_token", res.data.access_token)
-      cookie.set("user_refresh_token", res.data.refresh_token)
+      console.log(res)
+      cookie.set("user_access_token", res.data.access)
+      cookie.set("user_refresh_token", res.data.refresh)
       setIsLoading(false)
       navigate("/")
       window.location.reload()

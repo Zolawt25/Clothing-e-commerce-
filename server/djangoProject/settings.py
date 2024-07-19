@@ -74,24 +74,24 @@ SITE_ID=1
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware", # new
+    "whitenoise.middleware.WhiteNoiseMiddleware", # whitenoise
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware" # allauth
 ]
 
-# CORS_ORIGIN_WHITELIST = (
-#     "http://localhost:3000",
-#     "http://localhost:8000",
-#     "http://127.0.0.1:5173"
-# )
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:5173",
+    "https://cara-fawn.vercel.app"
+)
 
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173", "https://cara-fawn.vercel.app"]
 
 # ALLOWED_HOSTS = ["*"]
 
@@ -184,7 +184,8 @@ REST_FRAMEWORK = {
 # "rest_framework.permissions.IsAuthenticated",
 # ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', # dj-rest-auth
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication', 
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',# dj-rest-auth
         'rest_framework_simplejwt.authentication.JWTAuthentication', # simpleJWT
     ],
     'DEFAULT_FILTER_BACKENDS': (
@@ -203,10 +204,10 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
 
-REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER':                
-         'users.registerSerializer.CustomRegisterSerializer',
-}
+# REST_AUTH_REGISTER_SERIALIZERS = {
+#     'REGISTER_SERIALIZER':                
+#          'users.registerSerializer.CustomRegisterSerializer',
+# }
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email' 
 ACCOUNT_EMAIL_REQUIRED = True 
@@ -217,14 +218,26 @@ ACCOUNT_EMAIL_VERIFICATION = None
 
 # dj-rest-auth
 
-REST_AUTH_SERIALIZERS = {
-    'LOGIN_SERIALIZER':  'users.loginSerializer.CustomLoginSerializer',
+# REST_AUTH_SERIALIZERS = {
+#     'LOGIN_SERIALIZER':  'users.loginSerializer.CustomLoginSerializer',
+#     'JWT_TOKEN_CLAIMS_SERIALIZER': 'users.tokenSerializer.MyTokenObtainPairSerializer',
+# }
+
+REST_AUTH = {
+    'LOGIN_SERIALIZER': 'users.loginSerializer.CustomLoginSerializer',
+    # 'JWT_SERIALIZER': 'users.tokenSerializer.MyTokenObtainPairSerializer',
     'JWT_TOKEN_CLAIMS_SERIALIZER': 'users.tokenSerializer.MyTokenObtainPairSerializer',
+    'REGISTER_SERIALIZER': 'users.registerSerializer.CustomRegisterSerializer',
+    #
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': "jwt_access_token",
+    'JWT_AUTH_REFRESH_COOKIE': "jwt_refresh_token",
+    "JWT_AUTH_HTTPONLY": False,
 }
 
-REST_USE_JWT = True 
-JWT_AUTH_COOKIE = 'jwt_access_token' 
-JWT_AUTH_REFRESH_COOKIE = 'jwt_refresh_token' 
+# REST_USE_JWT = True 
+# JWT_AUTH_COOKIE = 'jwt_access_token' 
+# JWT_AUTH_REFRESH_COOKIE = 'jwt_refresh_token' 
 
 # simpleJWT
 
