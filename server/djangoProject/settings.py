@@ -84,14 +84,15 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware" # allauth
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:5173",
-    "https://cara-sigma.vercel.app"
-)
+# CORS_ORIGIN_WHITELIST = (
+#     "http://localhost:3000",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:5173"
+# )
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173", "https://cara-sigma.vercel.app"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
 
 # ALLOWED_HOSTS = ["*"]
 
